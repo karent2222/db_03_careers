@@ -66,7 +66,31 @@ public class CreateDB {
                 System.out.println("Inserted " + interestRS.getInt("n") + " rows to Interests table.");
             }
 
-            // TODO: create/populate Students  
+            
+            // DROP Students table if it already exists in careers db 
+            String studentsTbl = "DROP TABlE IF EXISTS Students";
+            stmt.executeUpdate(studentsTbl);
+            
+            // TODO: create/populate Students
+            studentsTbl = "CREATE TABLE Students(\n" +
+                            "email VARCHAR(255) NOT NULL,\n" +
+                            "name VARCHAR(255) NOT NULL, \n" + 
+                            "abbrv VARCHAR(15) NOT NULL, \n" + 
+                            "semester VARCHAR(255) NOT NULL, /n" +
+                            "interests VARCHAR(255) NOT NULL);"; 
+
+            stmt.executeUpdate(studentsTbl);
+
+             // Insert data into Students
+             studentsTbl = "INSERT INTO STUDENTS VALUES\n" +
+             "('eastmanv@msudenver.edu', 'Virginia Eastman', 'cs', 'Spring 2022', '[cloud db java mysql sql]'),\n" +
+             "('gilbertb@msudenver.edu', 'Barbara Gilbert', 'cs', 'Fall 2023', '[db python sql]'), \n" +
+             "('zachariasr@msudenver.edu', 'Robert Zacharias', 'cs', 'Spring 2023', '[cloud edu web]')";
+             stmt.executeUpdate(studentsTbl);
+             conn.commit();
+
+
+
             // DROP Students table if it already exists in careers db 
             // Create Students table
             // Insert data into Students 
