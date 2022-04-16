@@ -83,18 +83,19 @@ public class CreateDB {
 
              // Insert data into Students
              studentsTbl = "INSERT INTO STUDENTS VALUES\n" +
-             "('eastmanv@msudenver.edu', 'Virginia Eastman', 'cs', 'Spring 2022', '[cloud db java mysql sql]'),\n" +
-             "('gilbertb@msudenver.edu', 'Barbara Gilbert', 'cs', 'Fall 2023', '[db python sql]'), \n" +
-             "('zachariasr@msudenver.edu', 'Robert Zacharias', 'cs', 'Spring 2023', '[cloud edu web]')";
+                             "('eastmanv@msudenver.edu', 'Virginia Eastman', 'cs', 'Spring 2022', '[cloud db java mysql sql]'),\n" +
+                            "('gilbertb@msudenver.edu', 'Barbara Gilbert', 'cs', 'Fall 2023', '[db python sql]'), \n" +
+                            "('zachariasr@msudenver.edu', 'Robert Zacharias', 'cs', 'Spring 2023', '[cloud edu web]')";
              stmt.executeUpdate(studentsTbl);
              conn.commit();
 
 
-
-            // DROP Students table if it already exists in careers db 
-            // Create Students table
-            // Insert data into Students 
             // Verify the data was inserted into the Students table
+            String studentsCount = "SELECT COUNT (*) as n FROM Students";
+            ResultSet studentsRS = stmt.executeQuery(studentsCount);
+            while(stuedetsRS.next()){
+                System.out.println("Students" + studentsRS.getInt(columnLabel: "n") + "rows to Students table");
+            }
 
             // TODO: create/populate Employers  
             // DROP Employers table if it already exists in careers db 
