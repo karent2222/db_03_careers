@@ -10,6 +10,8 @@ import java.sql.*;
 public class CreateDB {
 
     // TODO: create and populate the database
+    private static String columnLabel;
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         try{
@@ -93,12 +95,22 @@ public class CreateDB {
             // Verify the data was inserted into the Students table
             String studentsCount = "SELECT COUNT (*) as n FROM Students";
             ResultSet studentsRS = stmt.executeQuery(studentsCount);
-            while(stuedetsRS.next()){
-                System.out.println("Students" + studentsRS.getInt(columnLabel: "n") + "rows to Students table");
+            while(studentsRS.next()){
+                System.out.println("Students" + studentsRS.getInt("n") + "rows to Students table");
             }
 
-            // TODO: create/populate Employers  
+            
             // DROP Employers table if it already exists in careers db 
+            String employersTbl = "DROP TABlE IF EXISTS Employers";
+            stmt.executeUpdate(employersTbl);
+            
+            // TODO: create/populate Employers  
+            employersTbl = "CREATE TABLE Employers(\n" +
+            "id VARCHAR(3) NOT NULL PRIMARY KEY,\n " +
+            "company name VARCHAR(255) NOT NULL, \n" +
+            "")
+                            
+            
             // Create Employers table
             // Insert data into Employers 
             // Verify the data was inserted into the Employers table 
