@@ -75,19 +75,18 @@ public class CreateDB {
             
             // TODO: create/populate Students
             studentsTbl = "CREATE TABLE Students(\n" +
-                            "email VARCHAR(255) NOT NULL,\n" +
+                            "email VARCHAR(255) NOT NULL PRIMARY KEY,\n" +
                             "name VARCHAR(255) NOT NULL, \n" + 
-                            "abbrv VARCHAR(15) NOT NULL, \n" + 
-                            "semester VARCHAR(255) NOT NULL, /n" +
-                            "interests VARCHAR(255) NOT NULL);"; 
+                            "major VARCHAR(15) NOT NULL, \n" + 
+                            "graduation VARCHAR(255) NOT NULL);"; 
 
             stmt.executeUpdate(studentsTbl);
 
              // Insert data into Students
              studentsTbl = "INSERT INTO STUDENTS VALUES\n" +
-                             "('eastmanv@msudenver.edu', 'Virginia Eastman', 'cs', 'Spring 2022', '[cloud db java mysql sql]'),\n" +
-                            "('gilbertb@msudenver.edu', 'Barbara Gilbert', 'cs', 'Fall 2023', '[db python sql]'), \n" +
-                            "('zachariasr@msudenver.edu', 'Robert Zacharias', 'cs', 'Spring 2023', '[cloud edu web]')";
+                            "('eastmanv@msudenver.edu', 'Virginia Eastman', 'cs', 'Spring 2022, cloud db java mysql sql'),\n" +
+                            "('gilbertb@msudenver.edu', 'Barbara Gilbert', 'cs', 'Fall 2023, db python sql'), \n" +
+                            "('zachariasr@msudenver.edu', 'Robert Zacharias', 'cs', 'Spring 2023, cloud edu web')";
              stmt.executeUpdate(studentsTbl);
              conn.commit();
 
@@ -104,17 +103,34 @@ public class CreateDB {
             String employersTbl = "DROP TABlE IF EXISTS Employers";
             stmt.executeUpdate(employersTbl);
             
-            // TODO: create/populate Employers  
+            // TODO:Create Employers table 
             employersTbl = "CREATE TABLE Employers(\n" +
-            "id VARCHAR(3) NOT NULL PRIMARY KEY,\n " +
-            "company name VARCHAR(255) NOT NULL, \n" +
-            "")
-                            
-            
-            // Create Employers table
-            // Insert data into Employers 
+                            "id VARCHAR(4) NOT NULL PRIMARY KEY,\n " +
+                            "name VARCHAR(255) NOT NULL, \n" +
+                            "size INT(3) NOT NULL, \n" +
+                            "location VARCHAR(255) NOT NULL, \n" +
+                            "forprofit VARCHAR(255) NOT NULL, \n" +
+                            "govem VARCHAR(255) NOT NULL);";
+
+            stmt.executeUpdate(employersTbl);
+           
+            //Insert data into Employers table
+            employersTbl = "INSERT INTO EMPLOYERS VALUES\n" +
+                            "('101', 'Wonka Industries', '350', 'Lakewood, CO', 'true, false','db dba java mysql postgres sql'), \n" +
+                            "('202', 'Cheers Agency', '1000', 'Denver, CO', 'true, false', 'aws cloud python sql'), \n" +
+                            "('303', 'Dominate the World', '5', 'Golden, CO', 'true, false', 'cloud cyber java web'), \n" +
+                            "('404', 'Stingers Org', '212', 'Denver, CO', 'true, false', 'postgres python sql'), \n" +
+                            "('505', 'Easy Peasy', '1', 'Littleton, CO', 'true, false', 'java')";
+                                                      
             // Verify the data was inserted into the Employers table 
-        }
+            String employersCount = "SELECT COUNT (*) as n FROM Employers";
+            ResultSet employersRS = stmt.executeQuery(employersCount);
+            while(employersRS.next()){
+                System.out.println("Employers" + employersRS.getInt("n") + "rows to Employers table");
+            }
+            }
+
+        
         catch(Exception e){
             e.printStackTrace(System.out);
         }
