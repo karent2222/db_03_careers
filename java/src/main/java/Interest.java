@@ -48,6 +48,13 @@ public class Interest {
         EntityManager em = emf.createEntityManager();
 
         // TODO: list all interests
+    Query query = em.createQuery("SELECT a FROM Interests a");
+        for (Object obj: query.getResultList()) {
+            Interest interest = (Interest) obj;
+            System.out.println(interest);
+
+}
+
         
 
     
