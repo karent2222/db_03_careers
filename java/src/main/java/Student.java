@@ -7,6 +7,8 @@
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 // TODO: finish the object-relational mapping
@@ -32,7 +34,7 @@ class StudentInterestPK implements Serializable {
 
     @Override
     public String toString(){
-        return "StudentInterestPK{stEmail = " + stEmail + ", intAbbrv = " + intAbbrv + "}";
+        return "StudentInterestPK{email = " + stEmail + ", abbrv = " + intAbbrv + "}";
     }
 }
 
@@ -102,22 +104,28 @@ class Student {
        return "Students{ email = " + email + ", name = " + name + ", major = " + major + ", graduation = " + graduation + " }";
    }
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws SQLException{
+
         // Entity Manager initialization
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("db03");
         EntityManager em = emf.createEntityManager();
-
+        try {
         // TODO: list all students
 
         // Create query string that includes a join for the Students and StudentInterests table to display students with each interest
         Query query = em.createQuery("SELECT a FROM Student a");
-        //List<String> students = new List<String> ();
+        List<String> students = new ArrayList<String> ();
         for(Object obj:  query.getResultList()){
             Student student = (Student) obj; 
-            System.out.println(student);
+            students.add(student.toString());
         }
+        System.out.println(students); 
         
+    } catch (Exception e){
+        System.out.println(e);
+    }
+     finally{   
         em.close();
+    }
     }
 }
