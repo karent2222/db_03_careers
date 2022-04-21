@@ -15,31 +15,29 @@ import java.util.List;
 public class Interest {
     @Id
     private String abbrv;
-    
+
     private String descr;
-    
-    public String getAbbrv(){
+
+    public String getAbbrv() {
         return abbrv;
     }
-    public void setAbbrv(String abbrv){
+
+    public void setAbbrv(String abbrv) {
         this.abbrv = abbrv;
     }
-    
-    public String getDescr(){
+
+    public String getDescr() {
         return descr;
     }
-    public void setDescr(String description){
+
+    public void setDescr(String description) {
         this.descr = description;
     }
 
     @Override
-    public String toString(){
-        return "Interests{ abbrv = " + abbrv + ", descr =" + descr + "}";  
+    public String toString() {
+        return "Interest: {abbrv = " + abbrv + ", descr =" + descr + "}";
     }
-    
-
-
-
 
     public static void main(String[] args) {
 
@@ -48,16 +46,13 @@ public class Interest {
         EntityManager em = emf.createEntityManager();
 
         // TODO: list all interests
-    Query query = em.createQuery("SELECT a FROM Interests a");
-        for (Object obj: query.getResultList()) {
+        Query query = em.createQuery("SELECT a FROM Interest a");
+        for (Object obj : query.getResultList()) {
             Interest interest = (Interest) obj;
             System.out.println(interest);
 
-}
+        }
 
-        
-
-    
         em.close();
     }
 }
