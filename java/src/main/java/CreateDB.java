@@ -25,34 +25,34 @@ public class CreateDB {
             }
             Statement stmt = conn.createStatement();
 
-            // String drop = "DROP SCHEMA PUBLIC CASCADE"; 
-            // stmt.executeUpdate(drop);
+            String drop = "DROP SCHEMA PUBLIC CASCADE"; 
+            stmt.executeUpdate(drop);
            
-             // DROP EmployerIntersts table if it already exists in the careers db
-            String empIntTbl = "DROP TABLE IF EXISTS EmployerInterests;";
-            stmt.executeUpdate(empIntTbl);
+            //  // DROP EmployerIntersts table if it already exists in the careers db
+            // String empIntTbl = "DROP TABLE IF EXISTS EmployerInterests;";
+            // stmt.executeUpdate(empIntTbl);
 
-            // DROP StudentInterests table if it exists in careers db
-            String stIntTbl = "DROP TABLE IF EXISTS StudentInterests;";
-            stmt.executeUpdate(stIntTbl);
+            // // DROP StudentInterests table if it exists in careers db
+            // String stIntTbl = "DROP TABLE IF EXISTS StudentInterests;";
+            // stmt.executeUpdate(stIntTbl);
 
-             // DROP Employers table if it already exists in careers db
-             String employersTbl = "DROP TABlE IF EXISTS Employers";
-             stmt.executeUpdate(employersTbl);
+            //  // DROP Employers table if it already exists in careers db
+            //  String employersTbl = "DROP TABlE IF EXISTS Employers";
+            //  stmt.executeUpdate(employersTbl);
 
-             // DROP Students table if it already exists in careers db
-            String studentsTbl = "DROP TABlE IF EXISTS Students";
-            stmt.executeUpdate(studentsTbl);
+            //  // DROP Students table if it already exists in careers db
+            // String studentsTbl = "DROP TABlE IF EXISTS Students";
+            // stmt.executeUpdate(studentsTbl);
 
-              // DROP Interests table if it already exists in careers db
-              String interestTbl = "DROP TABlE IF EXISTS Interests";
-              stmt.executeUpdate(interestTbl);
+            //   // DROP Interests table if it already exists in careers db
+            //   String interestTbl = "DROP TABlE IF EXISTS Interests";
+            //   stmt.executeUpdate(interestTbl);
 
            
 
 
             // Create Interests table
-            interestTbl = "CREATE TABLE Interests(\n" +
+            String interestTbl = "CREATE TABLE Interests(\n" +
                     "abbrv VARCHAR(15) NOT NULL PRIMARY KEY,\n" +
                     "descr VARCHAR(50) NOT NULL);";
 
@@ -88,7 +88,7 @@ public class CreateDB {
             }
 
             // Create Students table
-            studentsTbl = "CREATE TABLE Students(\n" +
+            String studentsTbl = "CREATE TABLE Students(\n" +
                     "email VARCHAR(255) NOT NULL PRIMARY KEY,\n" +
                     "name VARCHAR(255) NOT NULL, \n" +
                     "major VARCHAR(15) NOT NULL, \n" +
@@ -113,7 +113,7 @@ public class CreateDB {
 
         
             // Create StudentInterests table
-            stIntTbl = "CREATE TABLE StudentInterests(\n" +
+            String stIntTbl = "CREATE TABLE StudentInterests(\n" +
                     "email VARCHAR(255) NOT NULL,\n" +
                     "abbrv VARCHAR(15) NOT NULL,\n" +
                     "FOREIGN KEY(email) REFERENCES Students(email)," +
@@ -147,7 +147,7 @@ public class CreateDB {
             }
 
             // Create Employers table
-            employersTbl = "CREATE TABLE Employers(\n" +
+            String employersTbl = "CREATE TABLE Employers(\n" +
                     "id INT NOT NULL PRIMARY KEY,\n " +
                     "name VARCHAR(255) NOT NULL, \n" +
                     "size INT NOT NULL, \n" +
@@ -177,12 +177,12 @@ public class CreateDB {
 
 
             // Create EmployerInterests table
-            empIntTbl = "CREATE TABLE EmployerInterests(\n" +
+            String empIntTbl = "CREATE TABLE EmployerInterests(\n" +
                     "id INT NOT NULL,\n" +
                     "abbrv VARCHAR(15) NOT NULL,\n" +
                     "FOREIGN KEY(id) REFERENCES Employers(id),\n" +
                     "FOREIGN KEY(abbrv) REFERENCES Interests(abbrv),\n" +
-                    "PRIMARY KEY(id, intAbbrv));";
+                    "PRIMARY KEY(id, abbrv));";
 
             stmt.executeUpdate(empIntTbl);
 

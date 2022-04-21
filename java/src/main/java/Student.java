@@ -14,27 +14,27 @@ import java.util.List;
 // TODO: finish the object-relational mapping
 
 class StudentInterestPK implements Serializable {
-    private String stEmail, intAbbrv; 
+    private String email, abbrv; 
 
-    public String getStEmail(){
-        return stEmail;
+    public String getEmail(){
+        return email;
     }
 
-    public void setStEmail(String stEmail){
-        this.stEmail = stEmail; 
+    public void setEmail(String email){
+        this.email = email; 
     }
 
-    public String getIntAbbrv(){
-        return intAbbrv;
+    public String getAbbrv(){
+        return abbrv;
     }
 
-    public void setIntAbbrv(String intAbbrv){
-        this.intAbbrv = intAbbrv;
+    public void setIntAbbrv(String abbrv){
+        this.abbrv = abbrv;
     }
 
     @Override
     public String toString(){
-        return "StudentInterestPK{email = " + stEmail + ", abbrv = " + intAbbrv + "}";
+        return "email = " + email + "\t\t\t abbrv = " + abbrv;
     }
 }
 
@@ -44,6 +44,7 @@ class StudentInterestPK implements Serializable {
 class StudentInterest implements Serializable {
     @EmbeddedId
     private StudentInterestPK stIntPK; 
+
 
     public StudentInterestPK getStudentInterestPK() {
         return stIntPK;
@@ -55,7 +56,7 @@ class StudentInterest implements Serializable {
 
     @Override
     public String toString(){
-        return "StudentInterests{ StudentInterestPK = " + stIntPK +" }";
+        return "\n" + stIntPK ;
     }
 }
 
@@ -67,6 +68,9 @@ class Student {
     private String email; 
     
     private String name, major, graduation; 
+
+    @Transient
+    private List<StudentInterest> stIntList; 
 
     public String getEmail(){
         return email; 
@@ -99,11 +103,26 @@ class Student {
         this.graduation = graduation; 
     }
 
+    public List<StudentInterest> getStudentInterests(){
+        return stIntList; 
+    }
+
+    public void setStudentInterest(List<StudentInterest> stIntList){
+        this.stIntList = stIntList; 
+    }
+
    @Override
    public String toString(){
-       return "Students{ email = " + email + ", name = " + name + ", major = " + major + ", graduation = " + graduation + " }";
+       String interests = ""; 
+       for(StudentInterest stint : this.stIntList){
+           interests = interests + stint.getStudentInterestPK().getAbbrv() + " "; 
+       }
+       return "Student: \nemail = " + email + "\nname = " + name + "\nmajor = " + major + "\ngraduation = " + graduation + "\nStudent Interests = [" + interests + "]\n";
    }
 
+   Student () {
+        stIntList = new ArrayList<StudentInterest>();
+   }
     public static void main(String[] args) throws SQLException{
 
         // Entity Manager initialization
@@ -113,15 +132,29 @@ class Student {
         // TODO: list all students
 
         // Create query string that includes a join for the Students and StudentInterests table to display students with each interest
+        
+        Query intQuery = em.createQuery("SELECT i from StudentInterest i"); 
+        List<StudentInterest> stInterests = new ArrayList<StudentInterest>();
+        StudentInterest stInt; 
+        for(Object obj: intQuery.getResultList()){
+           stInt = (StudentInterest) obj; 
+            stInterests.add(stInt);
+        }
+
         Query query = em.createQuery("SELECT a FROM Student a");
-        List<String> students = new ArrayList<String> ();
+        List<Student> students = new ArrayList<Student> ();
         for(Object obj:  query.getResultList()){
             Student student = (Student) obj; 
-            students.add(student.toString());
+            for(StudentInterest sti : stInterests){
+                if(sti.getStudentInterestPK().getEmail().contains(student.getEmail())){
+                    student.stIntList.add(sti);
+                }
+            }
+            students.add(student);   
         }
         System.out.println(students); 
-        
-    } catch (Exception e){
+    } 
+    catch (Exception e){
         System.out.println(e);
     }
      finally{   
