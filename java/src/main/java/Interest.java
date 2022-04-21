@@ -1,20 +1,18 @@
 /*
  * CS3810 - Principles of Database Systems - Spring 2022
  * Instructor: Thyago Mota
- * Student Names:
+ * Student Names: Alyssa Williams and Karent Correa 
  * Description: creates Interest entity and allows listing of all interests
  */
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
-// TODO: finish the object-relational mapping
+// ORM for Interests table
 @Entity
 @Table(name = "Interests")
 public class Interest {
     @Id
-    private String abbrv;
+    private String abbrv; // primary key for Interests table 
 
     private String descr;
 
@@ -34,6 +32,7 @@ public class Interest {
         this.descr = description;
     }
 
+    // Overload toString() method to display all Interest attributes. 
     @Override
     public String toString() {
         return "Interest: {abbrv = " + abbrv + ", descr =" + descr + "}";
@@ -45,7 +44,7 @@ public class Interest {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("db03");
         EntityManager em = emf.createEntityManager();
 
-        // TODO: list all interests
+        // Select all from Interests table and loop through the result set to print each interest. 
         Query query = em.createQuery("SELECT a FROM Interest a");
         for (Object obj : query.getResultList()) {
             Interest interest = (Interest) obj;

@@ -11,8 +11,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO: finish the object-relational mapping
 
+// ORM for StudentInterest combinational primary key 
 class StudentInterestPK implements Serializable {
     private String email, abbrv; 
 
@@ -38,7 +38,7 @@ class StudentInterestPK implements Serializable {
     }
 }
 
-// TODO: finish the object-relational mapping
+// ORM for StudentInterests table, uses StudentInterestPK as @EmbeddedId
 @Entity
 @Table(name = "StudentInterests")
 class StudentInterest implements Serializable {
@@ -60,17 +60,18 @@ class StudentInterest implements Serializable {
     }
 }
 
-// TODO: finish the object-relational mapping
+// ORM For Students table, has a one-to-many relationship with StudentInterests table.
 @Entity 
 @Table(name = "Students")
 class Student {
     @Id
-    private String email; 
+    private String email; // primary key for Students table 
     
     private String name, major, graduation; 
 
-    @Transient
-    private List<StudentInterest> stIntList; 
+    @OneToMany(targetEntity = StudentInterest.class)
+    @JoinColumn(name="email")
+    private List<StudentInterest> stIntList; //list to join Students and StudentInterests tables. FK from Students table is PK email
 
     public String getEmail(){
         return email; 
@@ -111,15 +112,17 @@ class Student {
         this.stIntList = stIntList; 
     }
 
+    //Overload toString() method to display all Student attributes and student interests based on student's email. 
    @Override
    public String toString(){
        String interests = ""; 
        for(StudentInterest stint : this.stIntList){
            interests = interests + stint.getStudentInterestPK().getAbbrv() + " "; 
        }
-       return "Student: \nemail = " + email + "\nname = " + name + "\nmajor = " + major + "\ngraduation = " + graduation + "\nStudent Interests = [" + interests + "]\n";
+       return "Student: \nemail = " + email + "\nname = " + name + "\nmajor = " + major + "\ngraduation = " + graduation + "\ninterests =[ " + interests + "]\n";
    }
 
+   // Constructor to initialize student interest list. 
    Student () {
         stIntList = new ArrayList<StudentInterest>();
    }
@@ -129,36 +132,35 @@ class Student {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("db03");
         EntityManager em = emf.createEntityManager();
         try {
-        // TODO: list all students
-
-        // Create query string that includes a join for the Students and StudentInterests table to display students with each interest
         
-        Query intQuery = em.createQuery("SELECT i from StudentInterest i"); 
-        List<StudentInterest> stInterests = new ArrayList<StudentInterest>();
-        StudentInterest stInt; 
-        for(Object obj: intQuery.getResultList()){
-           stInt = (StudentInterest) obj; 
-            stInterests.add(stInt);
-        }
 
+        
+        // Query intQuery = em.createQuery("SELECT i from StudentInterest i"); 
+        // List<StudentInterest> stInterests = new ArrayList<StudentInterest>();
+        // StudentInterest stInt; 
+        // for(Object obj: intQuery.getResultList()){
+        //    stInt = (StudentInterest) obj; 
+        //     stInterests.add(stInt);
+        // } < -- don't actually need this code when using @Join, wrote it before implementing the ManyToOne relationship.This might come in handy when refactoring for ManyToMany so leaving it commented out for now.
+
+        // Select all from Students and loop through the result set to print each student, including a list of their specific interests. 
         Query query = em.createQuery("SELECT a FROM Student a");
-        List<Student> students = new ArrayList<Student> ();
         for(Object obj:  query.getResultList()){
             Student student = (Student) obj; 
-            for(StudentInterest sti : stInterests){
-                if(sti.getStudentInterestPK().getEmail().contains(student.getEmail())){
-                    student.stIntList.add(sti);
-                }
-            }
-            students.add(student);   
+            // for(StudentInterest sti : stInterests){
+            //     if(sti.getStudentInterestPK().getEmail().contains(student.getEmail())){
+            //         student.stIntList.add(sti);
+            //     }
+            // } < -- don't actually need this code when using @Join, wrote it before implementing the ManyToOne relationship.This might come in handy when refactoring for ManyToMany so leaving it commented out for now.
+            System.out.println(student);   
         }
-        System.out.println(students); 
+        
     } 
     catch (Exception e){
-        System.out.println(e);
+        System.out.println(e); 
     }
      finally{   
-        em.close();
+        em.close(); // close the connection 
     }
     }
 }

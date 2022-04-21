@@ -25,31 +25,10 @@ public class CreateDB {
             }
             Statement stmt = conn.createStatement();
 
+            // Drops the schema every time this program is run to ensure a fresh careers db instance with the test data 
             String drop = "DROP SCHEMA PUBLIC CASCADE"; 
             stmt.executeUpdate(drop);
            
-            //  // DROP EmployerIntersts table if it already exists in the careers db
-            // String empIntTbl = "DROP TABLE IF EXISTS EmployerInterests;";
-            // stmt.executeUpdate(empIntTbl);
-
-            // // DROP StudentInterests table if it exists in careers db
-            // String stIntTbl = "DROP TABLE IF EXISTS StudentInterests;";
-            // stmt.executeUpdate(stIntTbl);
-
-            //  // DROP Employers table if it already exists in careers db
-            //  String employersTbl = "DROP TABlE IF EXISTS Employers";
-            //  stmt.executeUpdate(employersTbl);
-
-            //  // DROP Students table if it already exists in careers db
-            // String studentsTbl = "DROP TABlE IF EXISTS Students";
-            // stmt.executeUpdate(studentsTbl);
-
-            //   // DROP Interests table if it already exists in careers db
-            //   String interestTbl = "DROP TABlE IF EXISTS Interests";
-            //   stmt.executeUpdate(interestTbl);
-
-           
-
 
             // Create Interests table
             String interestTbl = "CREATE TABLE Interests(\n" +
@@ -152,18 +131,18 @@ public class CreateDB {
                     "name VARCHAR(255) NOT NULL, \n" +
                     "size INT NOT NULL, \n" +
                     "location VARCHAR(255) NOT NULL, \n" +
-                    "forprofit VARCHAR(5) NOT NULL, \n" + // boolean?
-                    "govern VARCHAR(5) NOT NULL);"; // boolean?
+                    "forprofit VARCHAR(5) NOT NULL, \n" + // should this a boolean?
+                    "govern VARCHAR(5) NOT NULL);"; // should this be a boolean?
 
             stmt.executeUpdate(employersTbl);
 
             // Insert data into Employers table
             employersTbl = "INSERT INTO Employers VALUES\n" +
-                    "('101', 'Wonka Industries', 350, 'Lakewood, CO', 'true', 'false'),\n" +
-                    "('202', 'Cheers Agency', 1000, 'Denver, CO', 'true', 'false'),\n" +
-                    "('303', 'Dominate the World', 5, 'Golden, CO', 'true', 'false'),\n" +
-                    "('404', 'Stingers Org', 212, 'Denver, CO', 'true', 'false'),\n" +
-                    "('505', 'Easy Peasy', 1, 'Littleton, CO', 'true', 'false');";
+                    "(101, 'Wonka Industries', 350, 'Lakewood, CO', 'true', 'false'),\n" +
+                    "(202, 'Cheers Agency', 1000, 'Denver, CO', 'true', 'false'),\n" +
+                    "(303, 'Dominate the World', 5, 'Golden, CO', 'true', 'false'),\n" +
+                    "(404, 'Stingers Org', 212, 'Denver, CO', 'true', 'false'),\n" +
+                    "(505, 'Easy Peasy', 1, 'Littleton, CO', 'true', 'false');";
 
             stmt.executeUpdate(employersTbl);
             conn.commit();
