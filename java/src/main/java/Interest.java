@@ -35,7 +35,7 @@ public class Interest {
     // Overload toString() method to display all Interest attributes. 
     @Override
     public String toString() {
-        return "Interest: {abbrv = " + abbrv + ", descr =" + descr + "}";
+        return "Interest: [abbrv = " + abbrv + ", descr = " + descr + "]";
     }
 
     public static void main(String[] args) {
@@ -49,7 +49,6 @@ public class Interest {
         for (Object obj : query.getResultList()) {
             Interest interest = (Interest) obj;
             System.out.println(interest);
-
         }
 
         em.close();

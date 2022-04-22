@@ -8,8 +8,7 @@
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 // ORM for EmployerInterest combinational primary key 
 class EmployerInterestPK implements Serializable {
@@ -138,8 +137,8 @@ class Employer {
         for (EmployerInterest empint : this.empIntList) {
             interests = interests + empint.getEmployerInterestPK().getAbbrv() + " ";
         }
-        return "\nEmployer:\nid= " + id + "\nname= " + name + "\nsize= " + size + "\nlocation= " + location + "\nforprofit= "
-                + forprofit + "\ngovern= " + govern + "\ninterests=[ " + interests + "]";
+        return "\nEmployer:\nid = " + id + "\nname = " + name + "\nsize = " + size + "\nlocation = " + location + "\nforprofit = "
+                + forprofit + "\ngovern = " + govern + "\ninterests = [ " + interests + "]";
     }
 
     // contructor to initialize employer interests list 
@@ -173,6 +172,7 @@ class Employer {
                 // } < -- don't actually need this code when using @Join, wrote it before implementing the ManyToOne relationship.This might come in handy when refactoring for ManyToMany so leaving it commented out for now. 
                 System.out.println(employer);
             }
+
         } catch (Exception e) {
             System.out.println(e);
         } finally {

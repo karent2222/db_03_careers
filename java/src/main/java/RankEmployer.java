@@ -6,17 +6,19 @@
  */
 
 import javax.persistence.*;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class RankEmployer {
 
     // compute the jaccard similarity between given student and employer
     static double jaccard(final Student student, final Employer employer) {
         int common = 0;
-        for (StudentInterest studentInterest: student.getStudentInterests()) {
+        for (StudentInterest studentInterest : student.getStudentInterests()) {
             boolean found = false;
             for (EmployerInterest employerInterest : employer.getEmpIntList())
-                if (studentInterest.getStudentInterestPK().getAbbrv().equals(employerInterest.getEmployerInterestPK().getAbbrv())) {
+                if (studentInterest.getStudentInterestPK().getAbbrv()
+                        .equals(employerInterest.getEmployerInterestPK().getAbbrv())) {
                     found = true;
                     break;
                 }
@@ -37,30 +39,36 @@ public class RankEmployer {
         Scanner sc = new Scanner(System.in);
         System.out.print("email: ");
         String email = sc.nextLine();
-        System.out.println("You said: " + email);
-        email = email.trim(); // trim whitespace from user input to ensure a successful query on Students table. 
+        email = email.trim(); // trim whitespace from user input to ensure a successful query on Students
+                              // table.
 
-        // Query that selects all from Students table where email is equal to email entered by user, utilize trim() method to 
+        // Query that selects all from Students table where email is equal to email
+        // entered by user
+        Student student; // init Student object to use outside of result set scope
+        Query stQuery = em.createQuery("SELECT s from Student s WHERE s.email = :email", Student.class)
+                .setParameter("email", email);
+        for (Object sObj : stQuery.getResultList()) {
+            student = (Student) sObj;
+            System.out.println("\nStudent-Employer Interest Ranking\n---------------------------------\n" + student);
 
-        // TODO: matching of the student to each employer
-        
-        // Query that selects all employers from Employer table.
+            // TODO: matching of the student to each employer
 
-        // For each result set, push the employer result into an employers list 
+            // Query that selects all employers from Employer table.
+            Employer employer; // init Employer object to use outside of result set scope
+            Query query = em.createQuery("SELECT a FROM Employer a");
+            for (Object eObj : query.getResultList()) {
+                employer = (Employer) eObj;
+                // Print each employer 
+                System.out.println(employer);
+                // Print a ranking with the employer formatted to 2 decimal places 
+                System.out.printf("Ranking: %.2f", jaccard(student, employer)); 
+                System.out.print("\n"); // formatting the result set to include a carriage return between each employer
+                                          
+            }
+        }
 
-        // create a RankEmployer object to be able to call the jaccard() method 
-
-        // For each employer compare the student using the jaccard() method. 
-
-        // sort the list by ranking 
-
-        // print the student details 
-
-        // print the sorted ranking of each eamployer for the specified student. 
-        
-
-        // close the scanner 
-        sc.close(); 
+        // close the scanner
+        sc.close();
 
         // close the Entity Manager connection
         em.close();
