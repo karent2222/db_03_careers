@@ -37,11 +37,32 @@ public class RankEmployer {
         Scanner sc = new Scanner(System.in);
         System.out.print("email: ");
         String email = sc.nextLine();
+        System.out.println("You said: " + email);
+        email = email.trim(); // trim whitespace from user input to ensure a successful query on Students table. 
+
+        // Query that selects all from Students table where email is equal to email entered by user, utilize trim() method to 
 
         // TODO: matching of the student to each employer
-
         
+        // Query that selects all employers from Employer table.
+
+        // For each result set, push the employer result into an employers list 
+
+        // create a RankEmployer object to be able to call the jaccard() method 
+
+        // For each employer compare the student using the jaccard() method. 
+
+        // sort the list by ranking 
+
+        // print the student details 
+
+        // print the sorted ranking of each eamployer for the specified student. 
+        
+
+        // close the scanner 
         sc.close(); 
+
+        // close the Entity Manager connection
         em.close();
     }
 }
