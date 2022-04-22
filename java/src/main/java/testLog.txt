@@ -1,0 +1,250 @@
+awilliams@wills-mbp-2 db_03_careers %  /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home/bin/java
+ -XX:+ShowCodeDetailsInExceptionMessages @/var/folders/2n/pgkq4qgn3rddq78r1s9zgqth0000gp/T/cp_2yl4fc24qrnh96va8ze0pmbe4.arg
+file CreateDB 
+
+Connection Successful!
+
+Inserted 16 rows to Interests table.
+Inserted 3 rows to Students table.
+Inserted 11 rows to StudentInterests table.
+Inserted 5 rows to Employers table.
+Inserted 18 rows to EmployerInterests table.
+
+Database populated! have a nice day :)
+
+awilliams@wills-mbp-2 db_03_careers %  cd "/Users/awilliams/Desktop/MSU Denver Docs/Enrolled Courses/CS-3810/db_03_careers"
+ ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home/bin/java -XX:+ShowCodeDetailsInExceptionMess
+ages @/var/folders/2n/pgkq4qgn3rddq78r1s9zgqth0000gp/T/cp_2yl4fc24qrnh96va8ze0pmbe4.argfile Interest 
+Apr 22, 2022 5:36:42 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: db03]
+Apr 22, 2022 5:36:42 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.6.7.Final
+Apr 22, 2022 5:36:43 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+Apr 22, 2022 5:36:43 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Apr 22, 2022 5:36:43 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:file:db/careers;ifexists=true]
+Apr 22, 2022 5:36:43 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {}
+Apr 22, 2022 5:36:43 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Apr 22, 2022 5:36:43 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2022-04-22T17:36:45.403-0600  WARN  HHH000038: Composite-id class does not override equals(): StudentInterestPK
+2022-04-22T17:36:45.405-0600  WARN  HHH000039: Composite-id class does not override hashCode(): StudentInterestPK
+2022-04-22T17:36:45.408-0600  WARN  HHH000038: Composite-id class does not override equals(): EmployerInterestPK
+2022-04-22T17:36:45.408-0600  WARN  HHH000039: Composite-id class does not override hashCode(): EmployerInterestPK
+Interest: [abbrv = android, descr = Android Development]
+Interest: [abbrv = app, descr = Mobile App Development]
+Interest: [abbrv = aws, descr = Amazon Web Services]
+Interest: [abbrv = cloud, descr = Cloud Computing]
+Interest: [abbrv = cyber, descr = Cyber Security]
+Interest: [abbrv = db, descr = Databases]
+Interest: [abbrv = dba, descr = Database Administrator]
+Interest: [abbrv = edu, descr = Education]
+Interest: [abbrv = java, descr = Java]
+Interest: [abbrv = kotlin, descr = Kotlin]
+Interest: [abbrv = mysql, descr = MySQL]
+Interest: [abbrv = postgres, descr = Postgresql]
+Interest: [abbrv = python, descr = Python]
+Interest: [abbrv = software, descr = Software Development]
+Interest: [abbrv = sql, descr = SQL]
+Interest: [abbrv = web, descr = Web Development]
+awilliams@wills-mbp-2 db_03_careers %  cd "/Users/awilliams/Desktop/MSU Denver Docs/Enrolled Courses/CS-3810/db_03_careers"
+ ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home/bin/java -XX:+ShowCodeDetailsInExceptionMess
+ages @/var/folders/2n/pgkq4qgn3rddq78r1s9zgqth0000gp/T/cp_2yl4fc24qrnh96va8ze0pmbe4.argfile Student 
+Apr 22, 2022 5:37:26 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: db03]
+Apr 22, 2022 5:37:26 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.6.7.Final
+Apr 22, 2022 5:37:27 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+Apr 22, 2022 5:37:27 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Apr 22, 2022 5:37:27 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:file:db/careers;ifexists=true]
+Apr 22, 2022 5:37:27 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {}
+Apr 22, 2022 5:37:27 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Apr 22, 2022 5:37:27 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2022-04-22T17:37:29.347-0600  WARN  HHH000038: Composite-id class does not override equals(): StudentInterestPK
+2022-04-22T17:37:29.348-0600  WARN  HHH000039: Composite-id class does not override hashCode(): StudentInterestPK
+2022-04-22T17:37:29.350-0600  WARN  HHH000038: Composite-id class does not override equals(): EmployerInterestPK
+2022-04-22T17:37:29.351-0600  WARN  HHH000039: Composite-id class does not override hashCode(): EmployerInterestPK
+Student: 
+email = eastmanv@msudenver.edu
+name = Virginia Eastman
+major = cs
+graduation = Spring 2022
+interests = [ cloud db java mysql sql ]
+
+Student: 
+email = gilbertb@msudenver.edu
+name = Barbara Gilbert
+major = cs
+graduation = Fall 2023
+interests = [ db python sql ]
+
+Student: 
+email = zachariasr@msudenver.edu
+name = Robert Zacharias
+major = cs
+graduation = Spring 2023
+interests = [ cloud edu web ]
+
+awilliams@wills-mbp-2 db_03_careers %  cd "/Users/awilliams/Desktop/MSU Denver Docs/Enrolled Courses/CS-3810/db_03_careers"
+ ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home/bin/java -XX:+ShowCodeDetailsInExceptionMess
+ages @/var/folders/2n/pgkq4qgn3rddq78r1s9zgqth0000gp/T/cp_2yl4fc24qrnh96va8ze0pmbe4.argfile Employer 
+Apr 22, 2022 5:37:50 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: db03]
+Apr 22, 2022 5:37:50 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.6.7.Final
+Apr 22, 2022 5:37:50 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+Apr 22, 2022 5:37:51 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Apr 22, 2022 5:37:51 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:file:db/careers;ifexists=true]
+Apr 22, 2022 5:37:51 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {}
+Apr 22, 2022 5:37:51 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Apr 22, 2022 5:37:51 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2022-04-22T17:37:52.758-0600  WARN  HHH000038: Composite-id class does not override equals(): StudentInterestPK
+2022-04-22T17:37:52.759-0600  WARN  HHH000039: Composite-id class does not override hashCode(): StudentInterestPK
+2022-04-22T17:37:52.763-0600  WARN  HHH000038: Composite-id class does not override equals(): EmployerInterestPK
+2022-04-22T17:37:52.765-0600  WARN  HHH000039: Composite-id class does not override hashCode(): EmployerInterestPK
+
+Employer:
+id = 101
+name = Wonka Industries
+size = 350
+location = Lakewood, CO
+forprofit = true
+govern = false
+interests = [ db dba java mysql postgres sql ]
+
+Employer:
+id = 202
+name = Cheers Agency
+size = 1000
+location = Denver, CO
+forprofit = true
+govern = false
+interests = [ aws cloud python sql ]
+
+Employer:
+id = 303
+name = Dominate the World
+size = 5
+location = Golden, CO
+forprofit = true
+govern = false
+interests = [ cloud cyber java web ]
+
+Employer:
+id = 404
+name = Stingers Org
+size = 212
+location = Denver, CO
+forprofit = true
+govern = false
+interests = [ postgres python sql ]
+
+Employer:
+id = 505
+name = Easy Peasy
+size = 1
+location = Littleton, CO
+forprofit = true
+govern = false
+interests = [ java ]
+awilliams@wills-mbp-2 db_03_careers %  cd "/Users/awilliams/Desktop/MSU Denver Docs/Enrolled Courses/CS-3810/db_03_careers"
+ ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-16.0.1.jdk/Contents/Home/bin/java -XX:+ShowCodeDetailsInExceptionMess
+ages @/var/folders/2n/pgkq4qgn3rddq78r1s9zgqth0000gp/T/cp_2yl4fc24qrnh96va8ze0pmbe4.argfile RankEmployer 
+Apr 22, 2022 5:38:21 PM org.hibernate.jpa.internal.util.LogHelper logPersistenceUnitInformation
+INFO: HHH000204: Processing PersistenceUnitInfo [name: db03]
+Apr 22, 2022 5:38:21 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.6.7.Final
+Apr 22, 2022 5:38:22 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+Apr 22, 2022 5:38:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Apr 22, 2022 5:38:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.hsqldb.jdbcDriver] at URL [jdbc:hsqldb:file:db/careers;ifexists=true]
+Apr 22, 2022 5:38:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {}
+Apr 22, 2022 5:38:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Apr 22, 2022 5:38:22 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
+2022-04-22T17:38:24.067-0600  WARN  HHH000038: Composite-id class does not override equals(): StudentInterestPK
+2022-04-22T17:38:24.068-0600  WARN  HHH000039: Composite-id class does not override hashCode(): StudentInterestPK
+2022-04-22T17:38:24.070-0600  WARN  HHH000038: Composite-id class does not override equals(): EmployerInterestPK
+2022-04-22T17:38:24.071-0600  WARN  HHH000039: Composite-id class does not override hashCode(): EmployerInterestPK
+email: eastmanv@msudenver.edu
+
+Student-Employer Interest Ranking
+---------------------------------
+Student: 
+email = eastmanv@msudenver.edu
+name = Virginia Eastman
+major = cs
+graduation = Spring 2022
+interests = [ cloud db java mysql sql ]
+
+
+Employer:
+id = 101
+name = Wonka Industries
+size = 350
+location = Lakewood, CO
+forprofit = true
+govern = false
+interests = [ db dba java mysql postgres sql ]
+Ranking: 0.57
+
+Employer:
+id = 202
+name = Cheers Agency
+size = 1000
+location = Denver, CO
+forprofit = true
+govern = false
+interests = [ aws cloud python sql ]
+Ranking: 0.29
+
+Employer:
+id = 303
+name = Dominate the World
+size = 5
+location = Golden, CO
+forprofit = true
+govern = false
+interests = [ cloud cyber java web ]
+Ranking: 0.29
+
+Employer:
+id = 404
+name = Stingers Org
+size = 212
+location = Denver, CO
+forprofit = true
+govern = false
+interests = [ postgres python sql ]
+Ranking: 0.14
+
+Employer:
+id = 505
+name = Easy Peasy
+size = 1
+location = Littleton, CO
+forprofit = true
+govern = false
+interests = [ java ]
+Ranking: 0.20
+awilliams@wills-mbp-2 db_03_careers % 
